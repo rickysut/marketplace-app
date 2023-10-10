@@ -10,10 +10,10 @@ import { useUser } from '@auth0/nextjs-auth0'
 
 export default function Nav() {
   const { user, isLoading } = useUser()
-  console.log('--->', user)
+  console.log('user --->', user)
 
   const { state } = useContext(Context as any)
-  console.log('--->', state)
+  console.log('State --->', state)
 
   const { cart } = state
   let itemCount = 0

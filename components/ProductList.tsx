@@ -1,6 +1,16 @@
 import { useContext } from 'react';
 import { Context } from '../context'
  
+
+const formatter = new Intl.NumberFormat('id-ID', {
+  style: 'currency',
+  currency: 'IDR',
+
+  // These options are needed to round to whole numbers if that's what you want.
+  // minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+  // maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+});
+
 const ProductList = ({ products }: { products: any[] } ) => { 
   return (
     <div className={listStyle}>
@@ -24,7 +34,7 @@ const  ProductItem = ({ product } : { product: any }) => {
         {product.name}
       </h3>
       <p className="mt-1 text-lg font-medium text-gray-900">
-        $ {product.price}
+        {formatter.format(product.price)}
       </p>
       <button className="p-2 bg-indigo-200 rounded" onClick={() => {
         dispatch({ type: 'ADD_TO_CART', payload: product })

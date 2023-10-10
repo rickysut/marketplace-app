@@ -27,8 +27,9 @@ const NewShopForm = ({ accessToken }: { accessToken: string }) => {
 
   const [createNewShop, { client, data }] = useMutation(CREATE_SHOP);
 
-  client.setLink(setAuthToken(accessToken).concat(httpLink));
-
+  // client.setLink(setAuthToken(accessToken).concat(httpLink));
+  
+  
   const { user } = useUser();
   
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ const NewShopForm = ({ accessToken }: { accessToken: string }) => {
     e.preventDefault();
 
     const { name, description, coverImg } = formData;
-
+    client.setLink(setAuthToken(accessToken).concat(httpLink));
     createNewShop({
       variables: { 
         name,
