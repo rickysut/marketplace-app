@@ -9,7 +9,7 @@ const CREATE_PRODUCT = gql`
     $description: String!,
     $imageUrl: String!,
     $category: String!,
-    $price: Float!,
+    $price: Int!,
     $shopID: ID!
   ) {
     createProduct(
